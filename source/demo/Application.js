@@ -1,5 +1,6 @@
 // Polyfill a full ES6 environment
-import 'babel-polyfill'
+import "core-js/stable"
+import "regenerator-runtime/runtime"
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -47,4 +48,4 @@ ReactDOM.render(
 )
 
 // Import and attach the favicon
-document.querySelector('[rel="shortcut icon"]').href = require('file!./favicon.png')
+document.querySelector('[rel="shortcut icon"]').href = require('file-loader!./favicon.png')

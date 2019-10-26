@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const autoprefixer = require('autoprefixer')
+// const autoprefixer = require('autoprefixer')
 const path = require('path')
 const webpack = require('webpack')
 
@@ -25,25 +25,25 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loader: 'babel',
         include: path.join(__dirname, 'source')
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css?modules&importLoaders=1', 'postcss'],
+        use: ['style', 'css?modules&importLoaders=1', 'postcss'],
         include: path.join(__dirname, 'source')
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css?importLoaders=1'],
+        use: ['style', 'css?importLoaders=1'],
         include: path.join(__dirname, 'styles.css')
       }
     ]
-  },
-  postcss: function () {
-    return [autoprefixer]
   }
+  // postcss: function () {
+  //   return [autoprefixer]
+  // }
 }

@@ -2,42 +2,40 @@
   "env": {
     "commonjs": {
       "presets": [
-        "es2015",
-        "react",
-        "stage-0"
+        "@babel/env",
+        "@babel/react"
       ]
     },
     "development": {
       "plugins": [
-        "typecheck",
-        [
-          "react-transform",
-          {
-            "transforms": [
-              {
-                "transform": "react-transform-hmr",
-                "imports": [
-                  "react"
-                ],
-                "locals": [
-                  "module"
-                ]
-              },
-              {
-                "transform": "react-transform-catch-errors",
-                "imports": [
-                  "react",
-                  "redbox-react"
-                ]
-              }
-            ]
-          }
-        ]
+        // "typecheck",
+        // [
+        //   "react-transform",
+        //   {
+        //     "transforms": [
+        //       {
+        //         "transform": "react-transform-hmr",
+        //         "imports": [
+        //           "react"
+        //         ],
+        //         "locals": [
+        //           "module"
+        //         ]
+        //       },
+        //       {
+        //         "transform": "react-transform-catch-errors",
+        //         "imports": [
+        //           "react",
+        //           "redbox-react"
+        //         ]
+        //       }
+        //     ]
+        //   }
+        // ]
       ],
       "presets": [
-        "es2015",
-        "react",
-        "stage-0"
+        "@babel/env",
+        "@babel/react"
       ]
     },
     "es": {
@@ -46,8 +44,7 @@
       ],
       "presets": [
         "es2015-rollup",
-        "react",
-        "stage-0"
+        "@babel/react"
       ]
     },
     "production": {
@@ -57,9 +54,8 @@
         "transform-runtime"
       ],
       "presets": [
-        "es2015",
-        "react",
-        "stage-0"
+        "@babel/env",
+        "@babel/react"
       ]
     },
     "test": {
@@ -68,13 +64,13 @@
         "__coverage__"
       ],
       "presets": [
-        "es2015",
-        "react",
-        "stage-0"
+        "@babel/env",
+        "@babel/react"
       ]
     }
   },
   "plugins": [
-    "transform-decorators-legacy"
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose" : true }]
   ]
 }
