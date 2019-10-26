@@ -1,8 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const autoprefixer = require('autoprefixer')
 const path = require('path')
 const webpack = require('webpack')
-console.log(webpack)
 module.exports = {
   devtool: 'eval',
   entry: {
@@ -29,7 +27,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
+            presets: ['@babel/preset-env']
           }
         },
         include: path.join(__dirname, 'source')
@@ -38,21 +36,33 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader?modules&importLoaders=1',
-          // 'postcss-loader'
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
+          },
+          'postcss-loader'
         ],
         include: path.join(__dirname, 'source')
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader?importLoaders=1'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
+          }
+        ],
         include: path.join(__dirname, 'styles.css')
       }
     ]
   },
-  // postcss: function () {
-  //   return [autoprefixer]
-  // },
   devServer: {
     contentBase: 'build',
     port: 3002
